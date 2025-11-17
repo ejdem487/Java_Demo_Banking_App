@@ -67,7 +67,9 @@ public class BankConsole {
             System.out.print("Welcome to our Bank: ");
             System.out.println("Select your choice: ");
             System.out.println("1. assign normal account");
-            System.out.println("2. Quit");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("8. Quit");
             Integer choice = sc.nextInt();
             sc.nextLine();
             switch (choice){
@@ -75,7 +77,15 @@ public class BankConsole {
                     Operation assignnormalacc = new AssignNormalAccount(bank.findUser(email));
                     invoker.executeOperation(assignnormalacc);
                     break;
-                    case 2:
+                case 2:
+                    Operation depositoperaion = new DepositOperation(bank.findUser(email).findPayingAccount());
+                    invoker.executeOperation(depositoperaion);
+                    break;
+                case 3:
+                    Operation withdrawoperation = new WithdrawOperation(bank.findUser(email).findPayingAccount());
+                    invoker.executeOperation(withdrawoperation);
+                    break;
+                    case 8:
                         System.out.println("Bye");
                         return;
             }

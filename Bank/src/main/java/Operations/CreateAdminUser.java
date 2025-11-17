@@ -33,6 +33,7 @@ public class CreateAdminUser implements CreateUser {
 
 
             if (isBlank(name) || isBlank(surname) || isBlank(email)) {
+
                 System.out.println("User data is incomplete !!");
                 return;
             }
@@ -57,17 +58,27 @@ public class CreateAdminUser implements CreateUser {
         }
     }
 
-    private static String readEmail(String prompt) {
+    private  String readEmail(String prompt) {
         while (true) {
             System.out.print(prompt);
             String s = INPUT.nextLine().trim();
 
-            if (!s.isEmpty() && s.contains("@") && s.indexOf('@') > 0 && s.lastIndexOf('.') > s.indexOf('@') + 1) {
-                return s;
+            boolean isvalid =  (!s.isEmpty() && s.contains("@") && s.indexOf('@') > 0 && s.lastIndexOf('.') > s.indexOf('@') + 1);
+
+            if (!isvalid){
+                System.out.println("Invalid email address !!, please try again");
+                 continue;}
+            if (bank.isUser(s)){
+                System.out.println("Email already exists !!!, please try again");
+                continue;
             }
-            System.out.println("Invalid email. Try again.");
+            return s;
+
         }
-    }
+
+
+        }
+
 
 
 
