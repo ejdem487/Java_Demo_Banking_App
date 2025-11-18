@@ -31,3 +31,4 @@ Konzolová inter-bankovní aplikace(zatím bez databáze)
 - Udelat logger file
 - Udelat další Junit (používam verzi 4) testy
 - Mozna i napojit na databazi H2
+- Dodelat dalsi junit testy
