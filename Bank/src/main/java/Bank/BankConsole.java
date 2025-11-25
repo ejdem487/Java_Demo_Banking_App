@@ -69,6 +69,8 @@ public class BankConsole {
             System.out.println("1. assign normal account");
             System.out.println("2. Deposit");
             System.out.println("3. Withdraw");
+            System.out.println("4. Transfer to savings account");
+            System.out.println("5. Assign Savings Account");
             System.out.println("8. Quit");
             Integer choice = sc.nextInt();
             sc.nextLine();
@@ -84,6 +86,14 @@ public class BankConsole {
                 case 3:
                     Operation withdrawoperation = new WithdrawOperation(bank.findUser(email).findPayingAccount());
                     invoker.executeOperation(withdrawoperation);
+                    break;
+                case 4:
+                    Operation transfertosavingsaccout = new TransferToSavingsAccount(bank.findUser(email).findPayingAccount(),bank.findUser(email).findSavingsAccount());
+                    invoker.executeOperation(transfertosavingsaccout);
+                    break;
+                case 5:
+                    Operation assignsavingsaccount = new AssignSavingsAccount(bank.findUser(email));
+                    invoker.executeOperation(assignsavingsaccount);
                     break;
                     case 8:
                         System.out.println("Bye");

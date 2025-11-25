@@ -12,6 +12,9 @@ public class TransferToOtherAccount implements Operation {
         this.to = to;
         this.amount = amount;
     }
+    // poresti kontrolu balance, a jestli je savings account a jestli je paying account
+
+
 
 
     @Override
