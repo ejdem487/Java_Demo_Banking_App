@@ -1,9 +1,6 @@
 package Bank;
 
 import Operations.*;
-import Users.NormalUserBuilder;
-import Users.NormalUserDirector;
-import Users.User;
 
 import java.util.Scanner;
 
@@ -71,6 +68,7 @@ public class BankConsole {
             System.out.println("3. Withdraw");
             System.out.println("4. Transfer to savings account");
             System.out.println("5. Assign Savings Account");
+            System.out.println("6. Transfer from savings account");
             System.out.println("8. Quit");
             Integer choice = sc.nextInt();
             sc.nextLine();
@@ -88,12 +86,17 @@ public class BankConsole {
                     invoker.executeOperation(withdrawoperation);
                     break;
                 case 4:
-                    Operation transfertosavingsaccout = new TransferToSavingsAccount(bank.findUser(email).findPayingAccount(),bank.findUser(email).findSavingsAccount());
+                    Operation transfertosavingsaccout = new TransferToOtherAccount(bank.findUser(email).findPayingAccount(),bank.findUser(email).findSavingsAccount());
                     invoker.executeOperation(transfertosavingsaccout);
                     break;
                 case 5:
                     Operation assignsavingsaccount = new AssignSavingsAccount(bank.findUser(email));
                     invoker.executeOperation(assignsavingsaccount);
+                    break;
+                case 6:
+                    Operation transferfromsavingsaccount = new TransferToOtherAccount(bank.findUser(email).findSavingsAccount(),bank.findUser(email).findSavingsAccount());
+                    invoker.executeOperation(transferfromsavingsaccount);
+
                     break;
                     case 8:
                         System.out.println("Bye");

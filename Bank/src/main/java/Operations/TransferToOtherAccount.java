@@ -2,34 +2,56 @@ package Operations;
 
 import Account.Account;
 
-public class TransferToOtherAccount implements Operation {
-    private final Account from;
-    private final Account to;
-    private final double amount;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-    public TransferToOtherAccount(Account from, Account to, double amount) {
-        this.from = from;
-        this.to = to;
-        this.amount = amount;
+public class TransferToOtherAccount implements Operation{
+    private Account from;
+    private Account to;
+    private Scanner scanner = new Scanner(System.in);
+
+    public  TransferToOtherAccount(Account from,Account to){
+        this.from=from;
+        this.to=to;
     }
-    // poresti kontrolu balance, a jestli je savings account a jestli je paying account
 
 
+    public double checkBalance()
+    {
+        while (true){
+            System.out.println("Please enter the amount you would like to send to your savings account:");
+            try {
+                double input = scanner.nextDouble();
+
+                if (input <= from.getBalance()&& input >0){
+                    return input;
+                }
+                else if(input <=0){
+                    System.out.println("Amount must be greater than zero");
+                }
+                else {
+                    System.out.println("Insufficient balance");
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Invalid input: "+e.getMessage()+"\n please try again");
+                scanner.nextLine();
+            }
+
+        }
+    }
 
 
     @Override
     public void execute() {
-        if (from == null || to == null) {
-            System.out.println("Error: from/to is null");
-            return;
+        double balance = checkBalance();
+        if (from != null && to != null) {
+            from.setBalance(from.getBalance() - balance);
+            to.setBalance(to.getBalance() + balance);
+            System.out.println("Your savings account balance is now: " + to.getBalance());
         }
-        if (from.getBalance() < amount) {
-            System.out.println("Insufficient funds.");}
-
-        from.setBalance(from.getBalance() - amount);
-        to.setBalance(to.getBalance() + amount);
-        System.out.println("Amount successfully transferred: " + amount);
+        else  {
+            System.out.println("Error: paying or savings account is null.");
         }
-
+    }
 }
-
