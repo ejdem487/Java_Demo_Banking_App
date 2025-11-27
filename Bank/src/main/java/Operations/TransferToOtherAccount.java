@@ -19,7 +19,7 @@ public class TransferToOtherAccount implements Operation{
     public double checkBalance()
     {
         while (true){
-            System.out.println("Please enter the amount you would like to send to your savings account:");
+            System.out.println("Please enter the amount you would like to transfer:");
             try {
                 double input = scanner.nextDouble();
 
@@ -44,14 +44,14 @@ public class TransferToOtherAccount implements Operation{
 
     @Override
     public void execute() {
+        if (from == null || to == null) {
+            System.out.println("Error: paying or savings account is missing.");
+            return;
+        }
+
         double balance = checkBalance();
-        if (from != null && to != null) {
-            from.setBalance(from.getBalance() - balance);
-            to.setBalance(to.getBalance() + balance);
-            System.out.println("Your savings account balance is now: " + to.getBalance());
-        }
-        else  {
-            System.out.println("Error: paying or savings account is null.");
-        }
+        from.setBalance(from.getBalance() - balance);
+        to.setBalance(to.getBalance() + balance);
+        System.out.println("Transfer completed. Destination account balance is now: " + to.getBalance());
     }
 }

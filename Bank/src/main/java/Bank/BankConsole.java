@@ -94,7 +94,7 @@ public class BankConsole {
                     invoker.executeOperation(assignsavingsaccount);
                     break;
                 case 6:
-                    Operation transferfromsavingsaccount = new TransferToOtherAccount(bank.findUser(email).findSavingsAccount(),bank.findUser(email).findSavingsAccount());
+                    Operation transferfromsavingsaccount = new TransferToOtherAccount(bank.findUser(email).findSavingsAccount(),bank.findUser(email).findPayingAccount());
                     invoker.executeOperation(transferfromsavingsaccount);
 
                     break;
