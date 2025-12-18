@@ -69,7 +69,7 @@ public class BankConsole {
             System.out.println("4. Transfer to savings account");
             System.out.println("5. Assign Savings Account");
             System.out.println("6. Transfer from savings account");
-            System.out.println("8. Quit");
+            System.out.println("20. Quit");
             Integer choice = sc.nextInt();
             sc.nextLine();
             switch (choice){
@@ -98,7 +98,9 @@ public class BankConsole {
                     invoker.executeOperation(transferfromsavingsaccount);
 
                     break;
-                    case 8:
+                case 7:
+                    Operation transfertootheraccount = new TransferToOtherAccount();
+                    case 20:
                         System.out.println("Bye");
                         return;
             }

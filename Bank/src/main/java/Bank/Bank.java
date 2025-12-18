@@ -71,6 +71,25 @@ public class Bank {
         return str;
     }
 
+    public boolean checkAccountExistency(int accountNumber){
+        for (User user: users){
+            if (user.findNormalAccount()||user.findPremiumAccount()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Account findAccount(int accountNumber){
+        for (User user: users){
+            if (user.findNormalAccount()||user.findPremiumAccount()){
+                return user.findPayingAccount();
+            }
+        }
+        System.out.println("Accout not found");
+        return null;
+    }
+
 }
 
 
