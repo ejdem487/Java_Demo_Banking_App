@@ -68,7 +68,7 @@ public class CreateAdminUser implements CreateUser {
             if (!isvalid){
                 System.out.println("Invalid email address !!, please try again");
                  continue;}
-            if (bank.isUser(s)){
+            if (bank.isUserforemail(s)){
                 System.out.println("Email already exists !!!, please try again");
                 continue;
             }

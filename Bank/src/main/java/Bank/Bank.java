@@ -51,6 +51,18 @@ public class Bank {
         return false;
     }
 
+    public boolean isUserforemail(String email){
+        for (User user: users){
+            if (email.equals(user.getEmail())){
+                //System.out.println("user found"); kvuli create email
+                return true;
+            }
+
+        }
+        //System.out.println("User not found"); kvuli creation of email
+        return false;
+    }
+
     public boolean login(String email,String password){
         for (User user: users){
             if (user.getEmail().equals(email) && user.getPassword().equals(password)){
@@ -73,7 +85,7 @@ public class Bank {
 
     public boolean checkAccountExistency(int accountNumber){
         for (User user: users){
-            if (user.findNormalAccount()||user.findPremiumAccount()){
+            if (user.findPayingAccount()!= null && user.findPayingAccount().getAccountNumber() == accountNumber){
                 return true;
             }
         }
@@ -82,7 +94,7 @@ public class Bank {
 
     public Account findAccount(int accountNumber){
         for (User user: users){
-            if (user.findNormalAccount()||user.findPremiumAccount()){
+            if (user.findPayingAccount()!= null && user.findPayingAccount().getAccountNumber() == accountNumber){
                 return user.findPayingAccount();
             }
         }

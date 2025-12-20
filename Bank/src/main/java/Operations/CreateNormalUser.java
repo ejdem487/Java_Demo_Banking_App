@@ -68,7 +68,7 @@ public class CreateNormalUser implements CreateUser {
                         continue;
                     }
 
-                    if (bank.isUser(s)){
+                    if (bank.isUserforemail(s)){
                         System.out.println("Email already exists. Try again.");
                         continue;
                     }
