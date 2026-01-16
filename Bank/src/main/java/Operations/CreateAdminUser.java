@@ -16,7 +16,7 @@ public class CreateAdminUser implements CreateUser {
     private final Bank bank;
     private String password;
 
-    private static final Scanner INPUT = new Scanner(System.in);
+    private final Scanner scanner;
 
     @Override
     public void getData() {
@@ -49,10 +49,10 @@ public class CreateAdminUser implements CreateUser {
     }
 
 
-    private static String readNonEmpty(String prompt) {
+    private String readNonEmpty(String prompt) {
         while (true) {
             System.out.print(prompt);
-            String s = INPUT.nextLine().trim();
+            String s = scanner.nextLine().trim();
             if (!s.isEmpty()) return s;
             System.out.println("Value cannot be empty. Try again.");
         }
@@ -61,7 +61,7 @@ public class CreateAdminUser implements CreateUser {
     private  String readEmail(String prompt) {
         while (true) {
             System.out.print(prompt);
-            String s = INPUT.nextLine().trim();
+            String s = scanner.nextLine().trim();
 
             boolean isvalid =  (!s.isEmpty() && s.contains("@") && s.indexOf('@') > 0 && s.lastIndexOf('.') > s.indexOf('@') + 1);
 
@@ -87,7 +87,8 @@ public class CreateAdminUser implements CreateUser {
         return s == null || s.trim().isEmpty();
     }
 
-    public CreateAdminUser(Bank bank) {
+    public CreateAdminUser(Bank bank, Scanner scanner) {
         this.bank = bank;
+        this.scanner = scanner;
     }
 }

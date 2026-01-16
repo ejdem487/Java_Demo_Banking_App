@@ -9,7 +9,6 @@ public static void main(String[] args) {
     bank.start();
 
 
-    //doresit menu
 
 
 }

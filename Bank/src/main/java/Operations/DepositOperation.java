@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class DepositOperation implements Operation {
     private Account account;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
-    public DepositOperation(Account account)
+    public DepositOperation(Account account, Scanner scanner)
     {
         this.account = account;
+        this.scanner = scanner;
     }
 
     public double checkAmount()

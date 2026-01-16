@@ -14,7 +14,7 @@ public class CreateNormalUser implements CreateUser {
     private ArrayList<Account> accounts;
     private final Bank bank;
 
-    private static final Scanner INPUT = new Scanner(System.in);
+    private final Scanner scanner;
 
     @Override
     public void getData() {
@@ -47,10 +47,10 @@ public class CreateNormalUser implements CreateUser {
     }
 
 
-    private static String readNonEmpty(String prompt) {
+    private String readNonEmpty(String prompt) {
         while (true) {
             System.out.print(prompt);
-            String s = INPUT.nextLine().trim();
+            String s = scanner.nextLine().trim();
             if (!s.isEmpty()) return s;
             System.out.println("Value cannot be empty. Try again.");
         }
@@ -59,7 +59,7 @@ public class CreateNormalUser implements CreateUser {
     private String readEmail(String prompt) {
         while (true) {
             System.out.print(prompt);
-            String s = INPUT.nextLine().trim();
+            String s = scanner.nextLine().trim();
 
             boolean validformat =  (!s.isEmpty() && s.contains("@") && s.indexOf('@') > 0 && s.lastIndexOf('.') > s.indexOf('@') + 1);
 
@@ -83,8 +83,9 @@ public class CreateNormalUser implements CreateUser {
         return s == null || s.trim().isEmpty();
     }
 
-    public CreateNormalUser(Bank bank) {
+    public CreateNormalUser(Bank bank, Scanner scanner) {
         this.bank = bank;
+        this.scanner = scanner;
     }
 
 }

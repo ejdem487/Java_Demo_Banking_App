@@ -8,11 +8,12 @@ import java.util.Scanner;
 public class TransferToOtherAccount implements Operation{
     private Account from;
     private Account to;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
-    public  TransferToOtherAccount(Account from,Account to){
+    public  TransferToOtherAccount(Account from, Account to, Scanner scanner){
         this.from=from;
         this.to=to;
+        this.scanner = scanner;
     }
 
 

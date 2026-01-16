@@ -30,7 +30,7 @@ public class BankConsole {
             sc.nextLine();
             switch (choice){
                 case 1:
-                    Operation createnormaluser = new CreateNormalUser(bank);
+                    Operation createnormaluser = new CreateNormalUser(bank, sc);
                     invoker.executeOperation((createnormaluser));
                     break;
                     case 2:
@@ -79,15 +79,15 @@ public class BankConsole {
                     invoker.executeOperation(assignnormalacc);
                     break;
                 case 2:
-                    Operation depositoperaion = new DepositOperation(bank.findUser(email).findPayingAccount());
+                    Operation depositoperaion = new DepositOperation(bank.findUser(email).findPayingAccount(), sc);
                     invoker.executeOperation(depositoperaion);
                     break;
                 case 3:
-                    Operation withdrawoperation = new WithdrawOperation(bank.findUser(email).findPayingAccount());
+                    Operation withdrawoperation = new WithdrawOperation(bank.findUser(email).findPayingAccount(), sc);
                     invoker.executeOperation(withdrawoperation);
                     break;
                 case 4:
-                    Operation transfertosavingsaccout = new TransferToOtherAccount(bank.findUser(email).findPayingAccount(),bank.findUser(email).findSavingsAccount());
+                    Operation transfertosavingsaccout = new TransferToOtherAccount(bank.findUser(email).findPayingAccount(), bank.findUser(email).findSavingsAccount(), sc);
                     invoker.executeOperation(transfertosavingsaccout);
                     break;
                 case 5:
@@ -95,7 +95,7 @@ public class BankConsole {
                     invoker.executeOperation(assignsavingsaccount);
                     break;
                 case 6:
-                    Operation transferfromsavingsaccount = new TransferToOtherAccount(bank.findUser(email).findSavingsAccount(),bank.findUser(email).findPayingAccount());
+                    Operation transferfromsavingsaccount = new TransferToOtherAccount(bank.findUser(email).findSavingsAccount(), bank.findUser(email).findPayingAccount(), sc);
                     invoker.executeOperation(transferfromsavingsaccount);
 
                     break;

@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 public class WithdrawOperation implements Operation {
     private Account account;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
-    public WithdrawOperation(Account account)
+    public WithdrawOperation(Account account, Scanner scanner)
     {
         this.account = account;
+        this.scanner = scanner;
     }
 
     public double checkAmount() {
