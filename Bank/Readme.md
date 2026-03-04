@@ -1,6 +1,6 @@
 # Java Banking Application
 
-Console-based inter-bank application built as a training project
+Console-based inter-banking application built as a training project
 for object-oriented design, design patterns, and interactive CLI development.
 
 ## Features
