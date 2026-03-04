@@ -1,34 +1,27 @@
-Konzolová inter-bankovní aplikace(zatím bez databáze)
+# Java Banking Application
 
- - Slouží jako tréninkový projekt pro práci s objekty, návrhovými vzory a interaktivním CLI.
+Console-based inter-bank application built as a training project
+for object-oriented design, design patterns, and interactive CLI development.
 
-## Hlavní vlastnosti
-- Registrace uživatelů s validací vstupů a ukládáním do paměťové “databáze”.
-- Přihlášení uživatele a vlastní uživatelské menu.
-- Správa bankovních účtů (běžný/premium/spořicí), generování čísel účtů, výpis všech klientů.
-- Základ pro bankovní operace jako vklad, výběr a převody mezi účty.
-- Konzolové rozhraní, které využívá Command pattern pro jednotlivé akce.
+## Features
+- User registration with input validation
+- Login system with user-specific menu
+- Bank account management (standard / premium / savings)
+- Account number generation
+- Deposits, withdrawals, and transfers between accounts
 
+## Architecture & Design Patterns
+- **Account** – Factory pattern for account types, Singleton for account number generation
+- **Users** – Builder + Director pattern for safe user construction
+- **Operations** – Command pattern via `Operation` interface and `OperationInvoker`
+- **Bank** – Central service managing users and application lifecycle via `BankConsole`
 
-## Architektura a vzory
-- `Account` – factory pro jednotlivé typy účtů a singleton pro generování čísel.
-- `Users` – Builder + Director pro bezpečnou konstrukci uživatele, přehled správy účtů.
-- `Operations` – rozhraní `Operation` + `OperationInvoker` (Command pattern) pro konzolové akce, specializované operace (vytvoření uživatele, přihlášení,
-  přidání účtu, vklady/výběry/převody).
-- `Bank` – centrální služba držící uživatele a konzoli (`BankConsole`), která řídí životní cyklus aplikace.
+## Tech Stack
+- Java 21
+- JUnit 4
 
-## Konzolové menu
+## How to Run
+1. Clone the repository
+2. Open in IntelliJ IDEA
+3. Run `BankConsole.java`
 
-1. Create Account – vede uživatele krok za krokem validovaným formulářem a uloží ho do banky.
-2. Display Accounts – vypíše všechny uživatele a jejich účty.
-3. Log in – ověření e-mailu a hesla, následně otevře uživatelské menu (např. přidání běžného účtu, budoucí operace).
-4. Quit – ukončí aplikaci.
-
-## To-do
-- Dodělat transfer opperation
-- přidat uživatele worker, který bude pracovat s userem
-- Vytvořit Dodelat console menu 
-- Udelat logger file
-- Udelat další Junit (používam verzi 4) testy
-- Mozna i napojit na databazi H2
-- Dodelat dalsi junit testy
